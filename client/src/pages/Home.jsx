@@ -7,10 +7,11 @@ export default function Home({ books, setBooks, deleteBook }) {
       {books.map((book) => {
         return (
           <div key={book._id}>
-            <Link to={`/book/${book._id}`}>
+            <Link to={`/books/${book._id}`}>
               <h2>{book.title}</h2>
-              <p>{book.author}</p>
             </Link>
+              <h3>{book.author}</h3>
+              <p>Read: {book.status ? "✅" : "😡"}</p>
             <button onClick={() => deleteBook(book._id)}>Delete Book</button>
           </div>
         );

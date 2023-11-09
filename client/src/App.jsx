@@ -20,15 +20,9 @@ function App() {
   }
 
   async function deleteBook(id) {
-    const check = confirm("You sure about that?");
-    if (check) {
-      const API = `http://localhost:8080/books/${id}`;
-      await axios.delete(API);
-      getBooks();
-      alert("Bye bye bye!");
-    } else {
-      alert("Phew, that was a close one!");
-    }
+    const API = `http://localhost:8080/books/${id}`;
+    await axios.delete(API);
+    getBooks();
   }
 
   return (
@@ -50,7 +44,7 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/book/:id" element={<Book />} />
+        <Route path="/books/:id" element={<Book />} />
       </Routes>
 
       <footer>

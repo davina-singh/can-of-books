@@ -10,7 +10,7 @@ export default function Form({ books, setBooks, book, setBook }) {
   });
 
   function handleChange(event) {
-    if (event.target.type === "status") {
+    if (event.target.type === "checkbox") {
         setFormData({ ...formData, [event.target.name]: event.target.checked });
     } else {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -32,7 +32,7 @@ export default function Form({ books, setBooks, book, setBook }) {
   }
 
   return (
-    <form onSubmit={book?.name ? updateBook : addBook}>
+    <form onSubmit={book?.title ? updateBook : addBook}>
       <input 
       name="title" 
       placeholder="title" 
@@ -49,9 +49,9 @@ export default function Form({ books, setBooks, book, setBook }) {
       name="status" 
       type="checkbox" 
       onChange={handleChange} 
-      value={formData.status}
+      checked={formData.status}
       />
-      <button>Add Book</button>
+      <button>{book?.title ? "Update Book" : " Add Book"}Add Book</button>
     </form>
   );
 }
